@@ -1,16 +1,23 @@
 package com.naveen_productService.productService.dtos;
 
 import com.naveen_productService.productService.models.Category;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class GenericProductDto {
-    private Long id;
+    private UUID id;
     private String title;
     private String description;
     private String image;
     private String category;
     private double price;
+    private String currency;
 }

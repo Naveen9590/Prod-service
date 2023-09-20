@@ -1,22 +1,21 @@
 package com.naveen_productService.productService.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
+@Entity(name="orders_table")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category extends BaseModel {
-    private String name;
-    @OneToMany(mappedBy = "category")
+public class Order extends BaseModel{
+    @ManyToMany
     private List<Product> products;
 }
