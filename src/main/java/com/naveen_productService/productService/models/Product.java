@@ -22,8 +22,8 @@ public class Product extends BaseModel {
 //         p   -----> c
 //    LtoR 1   -----> 1
 //    RtoL m   -----> 1
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Category category;
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
     private Price price;
 }

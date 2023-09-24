@@ -2,6 +2,7 @@ package com.naveen_productService.productService.controllers;
 
 import com.naveen_productService.productService.Exceptions.NotFoundException;
 import com.naveen_productService.productService.dtos.ExceptionDto;
+import com.naveen_productService.productService.dtos.GenericCategoryDto;
 import com.naveen_productService.productService.dtos.GenericProductDto;
 import com.naveen_productService.productService.models.Product;
 import com.naveen_productService.productService.services.ProductService;
@@ -46,8 +47,11 @@ public class ProductController {
         productService.deleteProduct(id);
         return new ResponseEntity<>("product with id: "+id +" deleted succesfully",HttpStatus.OK);
     }
-    @ExceptionHandler(NotFoundException.class)
-    private ResponseEntity<ExceptionDto> handleNotFoundException(NotFoundException e){
-        return new ResponseEntity(new ExceptionDto(e.getMessage(),HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
+    @PutMapping("/")
+    private ResponseEntity<GenericProductDto> updateProduct(@RequestBody GenericProductDto product) throws NotFoundException{
+        GenericProductDto response = productService.updateProduct(product);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+
 }
